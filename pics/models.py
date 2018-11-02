@@ -20,7 +20,7 @@ class Editor(models.Model):
 class Photo(models.Model):
     photo = models.ImageField(upload_to = 'articles/', blank=True)
     description = models.TextField()
-    location = models.ForeignKey(Location)
+    location = models.ForeignKey(Location,on_delete=model.CASCADE)
     category = models.ManyToManyField(categories)
     post_date = models.DateTimeField(auto_now_add=True)
 
@@ -54,6 +54,8 @@ class categories(models.Model):
 
     def __str__(self):
         return self.name
+
+
 
     def save_category(self):
         self.save()
