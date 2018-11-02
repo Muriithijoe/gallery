@@ -16,32 +16,26 @@ class Editor(models.Model):
     class Meta:
         ordering = ['first_name']
 
-class tags(models.Model):
-    name = models.CharField(max_length =30)
 
-    def __str__(self):
-        return self.name
-
-class Article(models.Model):
-    title = models.CharField(max_length =60)
-    post = models.TextField()
-    editor = models.ForeignKey(Editor)
-    tags = models.ManyToManyField(tags)
-    pub_date = models.DateTimeField(auto_now_add=True)
-    article_image = models.ImageField(upload_to = 'articles/', blank=True)
+class Photo(models.Model):
+    photo = models.ImageField(upload_to = 'articles/', blank=True)
+    description = models.TextField()
+    location = models.ForeignKey(Location)
+    category = models.ForeignKey(Category)
+    post_date = models.DateTimeField(auto_now_add=True)
 
     @classmethod
-    def today_news(cls):
+    def today_pics(cls):
         today = dt.date.today()
-        news = cls.objects.filter(pub_date__date = today)
-        return news
+        pics = cls.objects.filter(post_date__date = today)
+        return pics
 
     @classmethod
-    def days_news(cls,date):
-        news = cls.objects.filter(pub_date__date = date)
-        return news
+    def days_pics(cls,date):
+        pics = cls.objects.filter(post_date__date = date)
+        return pics
 
     @classmethod
     def search_by_title(cls,search_term):
-        news=cls.objects.filter(title__icontains=search_term)
-        return news
+        pics=cls.objects.filter(title__icontains=search_term)
+        return pics
