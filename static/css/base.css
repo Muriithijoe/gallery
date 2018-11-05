@@ -7,7 +7,7 @@
 }
 
 #display {
-    background: url(../img/tree.jpg);
+    background: url(../img/clouds.jpg);
     background-size: cover;
     height: 900px;
 }
@@ -25,6 +25,6 @@
 }
 
 #gallery {
-    background: url(../img/gallery.jpg);
+    background: url(../img/LA.jpg);
     background-size: cover;
 }
