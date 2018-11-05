@@ -43,35 +43,35 @@ class Photo(models.Model):
     post_date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ['image_name']
+        ordering = ['post_date']
 
-    def save_image(self):
+    def save_photo(self):
         self.save()
 
-    def delete_image(self):
+    def delete_photo(self):
         self.delete()
 
     @classmethod
-    def update_image(cls,id,name,description,location,category):
-        image = cls.objects.get(pk=id)
-        image = cls(name=name,description=description,location=location,category=category)
-        image.save()
+    def update_photo(cls,id,name,description,location,category):
+        photo = cls.objects.get(pk=id)
+        photo = cls(photo=photo,description=description,location=location,category=category,post_date=post_date)
+        photo.save()
 
     @classmethod
     def get_image_by_id(cls, id):
-        image = cls.objects.get(pk=id)
-        return image
+        photo = cls.objects.get(pk=id)
+        return photo
 
     @classmethod
     def filter_by_location(cls, location):
-        images = cls.objects.filter(location=location)
-        return images
+        photos = cls.objects.filter(location=location)
+        return photos
     @classmethod
     def all_images(cls):
-        images = cls.objects.all()
-        return images
+        photos = cls.objects.all()
+        return photos
 
     @classmethod
     def search_by_category(cls,search_term):
-        images = cls.objects.filter(category__icontains=search_term)
-        return images
+        photos = cls.objects.filter(category__icontains=search_term)
+        return photos
