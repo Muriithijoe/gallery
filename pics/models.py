@@ -42,18 +42,36 @@ class Photo(models.Model):
     category = models.ManyToManyField(categories)
     post_date = models.DateTimeField(auto_now_add=True)
 
-    @classmethod
-    def today_pics(cls):
-        today = dt.date.today()
-        pics = cls.objects.filter(post_date__date = today)
-        return pics
+    class Meta:
+        ordering = ['image_name']
+
+    def save_image(self):
+        self.save()
+
+    def delete_image(self):
+        self.delete()
 
     @classmethod
-    def days_pics(cls,date):
-        pics = cls.objects.filter(post_date__date = date)
-        return pics
+    def update_image(cls,id,name,description,location,category):
+        image = cls.objects.get(pk=id)
+        image = cls(name=name,description=description,location=location,category=category)
+        image.save()
 
     @classmethod
-    def search_by_title(cls,search_term):
-        pics=cls.objects.filter(title__icontains=search_term)
-        return pics
+    def get_image_by_id(cls, id):
+        image = cls.objects.get(pk=id)
+        return image
+
+    @classmethod
+    def filter_by_location(cls, location):
+        images = cls.objects.filter(location=location)
+        return images
+    @classmethod
+    def all_images(cls):
+        images = cls.objects.all()
+        return images
+
+    @classmethod
+    def search_by_category(cls,search_term):
+        images = cls.objects.filter(category__icontains=search_term)
+        return images
