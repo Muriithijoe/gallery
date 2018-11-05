@@ -20,12 +20,12 @@ def search_results(request):
 
     else:
         message = "No photos under this category exist"
-        return render(request, 'search.html',{"message":message})
+        return render(request, 'all-pics/search.html',{"message":message})
 
 
-def photo(request,image_id):
+def photo(request,photo_id):
     try:
         photo = Photo.objects.get(id = photo_id)
     except DoesNotExist:
         raise Http404()
-    return render(request,"image.html",{"image":image})
+    return render(request,"all-pics/image.html",{"photo":photo})

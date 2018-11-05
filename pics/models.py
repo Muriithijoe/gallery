@@ -17,7 +17,7 @@ class Editor(models.Model):
         ordering = ['first_name']
 
 class Location(models.Model):
-    name = models.CharField(max_length =90)
+    name = models.CharField(max_length =90, blank =True)
 
     def __str__(self):
         return self.name

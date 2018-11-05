@@ -7,6 +7,12 @@ class EditorTestClass(TestCase):
     def setUp(self):
         self.james= Editor(first_name = 'James', last_name ='Muriuki', email ='james@moringaschool.com')
 
+    # Testing Save Method
+    def test_save_method(self):
+        self.james.save_editor()
+        editors = Editor.objects.all()
+        self.assertTrue(len(editors) > 0)
+
     # Testing  instance
     def test_instance(self):
         self.assertTrue(isinstance(self.james,Editor))

@@ -1,15 +1,10 @@
-{% extends 'base.html' %}
+{% extends 'all-pics/base.html' %}
 {% block content %}
 
 <div class="container black white-text">
 
-
         <div class="row">
-                <h2 class="text-center col-xs-12">{{image.image_name}}</h2>
-        </div>
-
-        <div class="row">
-            <img src="{{image.photo.url}}"  class="img-responsive col-xs-12" alt="">
+            <img src="{{photo.photo.url}}"  class="img-responsive col-xs-12" alt="">
         </div>
 
         <br>
