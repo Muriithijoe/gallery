@@ -1,17 +1,22 @@
 **Project Title**
+
 Gallery
 
 **Author**
+
 Joe Muriithi
 
 **description**
+
 This is a my gallery where I post my pictures.
 
 **Getting Started**
+
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 
 **Built With**
+
 Django - as macro framework
 Python
 HTML
@@ -20,6 +25,7 @@ bootstrap4
 
 
 **License**
+
 MIT License
 
 Copyright (c) [2018] [Joe Muriithi Wambugu]
